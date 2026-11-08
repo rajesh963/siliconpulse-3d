@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "desktop": "npm run build && electron . --no-sandbox",
-    "desktop:dev": "electron . --no-sandbox",
+    "desktop": "npm run build && electron --no-sandbox .",
+    "desktop:dev": "electron --no-sandbox .",
     "package:linux": "npm run build && electron-builder --linux AppImage"
   },
   "dependencies": {
