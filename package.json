@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "desktop": "npm run build && electron --no-sandbox .",
     "desktop:dev": "electron --no-sandbox .",
-    "package:linux": "npm run build && electron-builder --linux AppImage"
+    "package:linux": "npm run build && electron-builder --linux AppImage",
+    "package:linux:dir": "npm run build && electron-builder --linux dir"
   },
   "dependencies": {
     "@react-three/drei": "^9.96.1",
@@ -62,6 +63,7 @@
       ],
       "category": "Development",
       "artifactName": "SiliconPulse-3D-${version}.${ext}"
-    }
+    },
+    "electronDist": "node_modules/electron/dist"
   }
 }

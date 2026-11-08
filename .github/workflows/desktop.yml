@@ -16,9 +16,10 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run package:linux
+      - run: npm run package:linux:dir
+      - run: cd release && zip -qr SiliconPulse-3D-linux-x64.zip linux-unpacked
       - uses: actions/upload-artifact@v4
         with:
           name: SiliconPulse-3D-linux
-          path: release/*.AppImage
+          path: release/SiliconPulse-3D-linux-x64.zip
           if-no-files-found: error
