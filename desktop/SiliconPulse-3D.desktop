@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=SiliconPulse 3D
+Comment=SoC architecture, nested modules, integration JSON
+Exec=/run/media/rajesh/DD/soc-3d-pulse/desktop/SiliconPulse-3D.sh
+Icon=applications-engineering
+Terminal=false
+Categories=Development;Engineering;

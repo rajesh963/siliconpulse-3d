@@ -12,6 +12,19 @@ npm run desktop
 This builds `dist/`, starts an internal static server, and opens an Electron
 window. No browser or external web server is involved.
 
+## Chrome app-mode launcher
+
+If Electron cannot create a window in your environment (for example a restricted
+container with a broken Chromium sandbox), use the Chrome app-mode launcher:
+
+```bash
+./desktop/SiliconPulse-3D.sh
+```
+
+or double-click `desktop/SiliconPulse-3D.desktop`. It starts a local static
+server and opens a frameless Chrome/Chromium app window — no browser tabs or URL
+bar. The window uses a dedicated Chrome profile under `~/.siliconpulse-chrome`.
+
 ## Package Linux
 
 ```bash
