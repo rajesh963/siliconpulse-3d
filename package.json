@@ -64,6 +64,7 @@
       "category": "Development",
       "artifactName": "SiliconPulse-3D-${version}.${ext}"
     },
-    "electronDist": "node_modules/electron/dist"
+    "electronDist": "node_modules/electron/dist",
+    "executableName": "SiliconPulse-3D"
   }
 }
