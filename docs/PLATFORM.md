@@ -1,6 +1,6 @@
 # SiliconPulse Platform — public SoC/IP knowledge, IP-XACT and program tracking
 
-This is the platform layer built on top of the 3D SoC explorer.
+This is the platform layer built on top of the architecture diagram.
 
 **Scale:** 11 companies · 12 public SoC presets · 436 hierarchy nodes · 25 reusable
 IP definitions · 49 curated spec sections · 6 cross-vendor bindings · 6 seeded
@@ -13,8 +13,8 @@ marked as a public summary / illustrative binding.
 
 | Pillar | What it does | Where |
 |---|---|---|
-| **SoC catalog** | Browse 9 vendor/architecture profiles, load any SoC into the 3D explorer, see public-data confidence. | Platform → SoC Catalog |
-| **Spec query** | Query a block, section number or keyword. Returns a summary + section + source URL + “Open IP in 3D”. | Platform → Spec Query |
+| **SoC catalog** | Browse 9 vendor/architecture profiles, load any SoC into the architecture view, see public-data confidence. | Platform → SoC Catalog |
+| **Spec query** | Query a block, section number or keyword. Returns a summary + section + source URL + “Open IP in Architecture”. | Platform → Spec Query |
 | **Cross-reference** | Reusable IP registry, vendor/usage graph, verified vs illustrative cross-vendor bindings. | Platform → Cross-Reference |
 | **Integration JSON** | Recursive SoC JSON with instances, bridges, buses, domains, specs and tracker links; download one SoC or all specs. | Platform → Integration JSON |
 | **IP-XACT** | Import 1685-2014 component XML, inspect bus interfaces/memory maps, assemble a custom SoC, export any catalog SoC. | Platform → IP-XACT |
@@ -113,10 +113,10 @@ Actions:
 - **SoC JSON** downloads one company/SoC integration file.
 - **All specs + SoCs** downloads the complete bundle (all companies, all specs, IP
   registry, bindings, seeded CRs/ADRs, latest five SoC sheets).
-- **Block tree** is interactive: click a node to open that exact IP/sub-IP in 3D.
+- **Block tree** is interactive: click a node to open that exact IP/sub-IP in the architecture view.
 - **Bridge instances** panel opens a bridge block directly.
 
-This is the machine-readable contract for integration; the 3D explorer is a view
+This is the machine-readable contract for integration; the architecture diagram is a view
 over the same hierarchy.
 
 ## 6. IP-XACT integration
@@ -130,7 +130,7 @@ over the same hierarchy.
 ### Custom assembly
 
 - Add one or more imported components.
-- Give the custom SoC a name and click **Build & load 3D**.
+- Give the custom SoC a name and click **Build custom SoC**.
 - Components are laid out in a 3×3 floorplan, ports are derived from bus
   interfaces, and master→slave connections are inferred.
 - The custom SoC is persisted and appears in the chip preset selector as
@@ -169,7 +169,7 @@ context, decision and consequences.
 ### RTL / DV gates
 Per-IP matrix of RTL frozen, lint, CDC, formal, UPF, timing and DV coverage for
 presets that carry deliverable data (Infineon, TI, NVIDIA and others). Each row
-opens the IP in 3D.
+opens the IP in the architecture view.
 
 ---
 
@@ -179,7 +179,6 @@ opens the IP in 3D.
 src/
   components/
     platform/          PlatformWorkspace + Catalog/SpecQuery/CrossRef/IpXact/Tracker
-    3d/                3D scene, module archetypes, traces, substrate
     ui/                TopNav, inspector, level navigator, domain legend
     trm/               TRM memory map / clock / domain / hierarchy views
   data/
@@ -208,4 +207,4 @@ Screenshots: `docs/screenshots/platform-*.png` and the AURIX/TI bridge views.
 - Cross-reference graph is a curated seed, not an exhaustive industry database.
 - Bridge instances are explicit for AURIX SRI and TI C29x VBUS; other SoCs use generic bridge nodes until their public bus topology is encoded.
 - Tracker is local-first; no multi-user audit trail or Jira/GitHub sync yet.
-- The 3D layout is architectural, not a physical floorplan or package model.
+- The diagram is architectural, not a physical floorplan or package model.

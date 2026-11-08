@@ -47,7 +47,7 @@ export interface ModuleNode {
   description: string;
   level: number; // 0 = SoC, 1 = Subsystem, 2 = IP, 3 = Submodule
   parentId: string | null;
-  // 3D positioning — LOCAL to the parent module (drill-down levels are re-centred automatically)
+  // Diagram positioning — LOCAL to the parent module (drill-down levels are re-centred automatically)
   // y is the block centre; helpers place it at height/2 so the block sits on the die surface.
   position: [number, number, number];
   size: [number, number, number]; // [width, height, depth]

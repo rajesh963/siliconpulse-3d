@@ -25,13 +25,13 @@ import {
 interface CustomerRequirementsMatrixProps {
   rootModule: ModuleNode;
   onSelectModule: (mod: ModuleNode) => void;
-  onOpen3DView: () => void;
+  onOpenArchitecture: () => void;
 }
 
 export const CustomerRequirementsMatrix: React.FC<CustomerRequirementsMatrixProps> = ({
   rootModule,
   onSelectModule,
-  onOpen3DView
+  onOpenArchitecture
 }) => {
   const [requirements, setRequirements] = useState<CustomerRequirement[]>(MOCK_CUSTOMER_REQUIREMENTS);
   const [deltas, setDeltas] = useState<SpecDeltaEvent[]>(MOCK_SPEC_DELTAS);
@@ -249,7 +249,7 @@ export const CustomerRequirementsMatrix: React.FC<CustomerRequirementsMatrixProp
                 <th className="py-3 px-4">🧪 DV Impact (UVM & Coverage)</th>
               )}
 
-              <th className="py-3 px-4 text-right">3D Floorplan</th>
+              <th className="py-3 px-4 text-right">Architecture View</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-800/60 font-sans">
@@ -263,7 +263,7 @@ export const CustomerRequirementsMatrix: React.FC<CustomerRequirementsMatrixProp
                   onClick={() => {
                     if (primaryModule) {
                       onSelectModule(primaryModule);
-                      onOpen3DView();
+                      onOpenArchitecture();
                     }
                   }}
                 >
@@ -394,13 +394,13 @@ export const CustomerRequirementsMatrix: React.FC<CustomerRequirementsMatrixProp
                         e.stopPropagation();
                         if (primaryModule) {
                           onSelectModule(primaryModule);
-                          onOpen3DView();
+                          onOpenArchitecture();
                         }
                       }}
                       className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 text-[11px] font-semibold transition inline-flex items-center gap-1"
                     >
                       <Eye className="w-3.5 h-3.5" />
-                      View 3D
+                      View Architecture
                     </button>
                   </td>
                 </tr>

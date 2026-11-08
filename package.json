@@ -13,17 +13,13 @@
     "package:linux:dir": "npm run build && electron-builder --linux dir"
   },
   "dependencies": {
-    "@react-three/drei": "^9.96.1",
-    "@react-three/fiber": "^8.15.16",
     "@types/canvas-confetti": "^1.9.0",
-    "@types/three": "^0.160.0",
     "canvas-confetti": "^1.9.2",
     "clsx": "^2.1.0",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.2.1",
-    "three": "^0.160.0"
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.1",
@@ -37,7 +33,7 @@
     "typescript": "^5.3.3",
     "vite": "^5.1.4"
   },
-  "description": "SiliconPulse 3D \u2014 SoC architecture, nested module editor and integration knowledge workspace",
+  "description": "SiliconPulse 3D — SoC architecture, nested module editor and integration knowledge workspace",
   "author": "Rajesh",
   "main": "electron/main.cjs",
   "build": {

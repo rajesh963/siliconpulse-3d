@@ -2,9 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { CompanySoCEntry } from '../../data/socCatalog';
 import type { ArchitectureDiagram, DiagramBlock, DiagramWire } from '../../types/diagram';
 import { getArchitectureDiagram } from '../../data/diagrams';
-import { ArrowUpRight, ArrowLeft, Box, Layers, Maximize2, Minus, Plus, Search, ZoomIn, Boxes, Square, Pencil, ChevronRight } from 'lucide-react';
-import { BlockDiagram3D } from './BlockDiagram3D';
-import type { ViewPreset } from './BlockDiagram3D';
+import { ArrowUpRight, ArrowLeft, Box, Layers, Maximize2, Minus, Plus, Search, ZoomIn, Pencil, ChevronRight } from 'lucide-react';
 import { DiagramImportModal } from './DiagramImportModal';
 import { DiagramEditor } from './DiagramEditor';
 import { diagramFromModule, diagramToJson } from '../../utils/diagramImport';
@@ -85,8 +83,6 @@ export const ArchitectureDiagramView: React.FC<ArchitectureDiagramViewProps> = (
   const [selectedWire, setSelectedWire] = useState<DiagramWire | null>(null);
   const [query, setQuery] = useState('');
   const [layer, setLayer] = useState<'core' | 'peripherals' | 'all'>('core');
-  const [mode, setMode] = useState<'3d' | '2d'>('3d');
-  const [view3d, setView3d] = useState<ViewPreset>('iso');
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const drag = useRef<{ x: number; y: number; px: number; py: number } | null>(null);
@@ -260,11 +256,7 @@ export const ArchitectureDiagramView: React.FC<ArchitectureDiagramViewProps> = (
               Clear upload
             </button>
           )}
-          <div className="flex rounded bg-silicon-900 border border-slate-700 p-0.5">
-            <button onClick={() => setMode('3d')} className={`px-1.5 py-1 rounded text-[8px] font-mono uppercase flex items-center gap-1 ${mode === '3d' ? 'bg-cyan-500/20 text-cyan-300' : 'text-slate-500 hover:text-white'}`}><Boxes className="w-3 h-3" /> 3D</button>
-            <button onClick={() => setMode('2d')} className={`px-1.5 py-1 rounded text-[8px] font-mono uppercase flex items-center gap-1 ${mode === '2d' ? 'bg-cyan-500/20 text-cyan-300' : 'text-slate-500 hover:text-white'}`}><Square className="w-3 h-3" /> 2D</button>
-          </div>
-          <div className={`flex rounded bg-silicon-900 border border-slate-700 p-0.5 ${mode === '2d' && diagramPath.length === 0 ? '' : 'hidden'}`}>
+          <div className={`flex rounded bg-silicon-900 border border-slate-700 p-0.5 ${diagramPath.length === 0 ? '' : 'hidden'}`}>
             {(['core', 'peripherals', 'all'] as const).map(item => (
               <button
                 key={item}
@@ -279,12 +271,7 @@ export const ArchitectureDiagramView: React.FC<ArchitectureDiagramViewProps> = (
             <Search className="w-3 h-3 text-slate-500 absolute left-2 top-1.5" />
             <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Find block…" className="w-40 pl-7 pr-2 py-1 rounded bg-silicon-900 border border-slate-700 text-[9px] font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500" />
           </div>
-          <div className={`flex rounded bg-silicon-900 border border-slate-700 p-0.5 ${mode === '3d' ? '' : 'hidden'}`}>
-            {(['iso', 'top', 'front'] as const).map(item => (
-              <button key={item} onClick={() => setView3d(item)} className={`px-1.5 py-1 rounded text-[8px] font-mono uppercase ${view3d === item ? 'bg-cyan-500/20 text-cyan-300' : 'text-slate-500 hover:text-white'}`}>{item}</button>
-            ))}
-          </div>
-          <div className={`flex items-center gap-0.5 rounded bg-silicon-900 border border-slate-700 p-0.5 ${mode === '2d' ? '' : 'hidden'}`}>
+          <div className="flex items-center gap-0.5 rounded bg-silicon-900 border border-slate-700 p-0.5">
             <button onClick={() => setZoom(z => Math.max(0.45, z / 1.2))} className="p-1 text-slate-400 hover:text-white"><Minus className="w-3 h-3" /></button>
             <span className="text-[8px] font-mono text-slate-500 w-8 text-center">{Math.round(zoom * 100)}%</span>
             <button onClick={() => setZoom(z => Math.min(4, z * 1.2))} className="p-1 text-slate-400 hover:text-white"><Plus className="w-3 h-3" /></button>
@@ -294,21 +281,7 @@ export const ArchitectureDiagramView: React.FC<ArchitectureDiagramViewProps> = (
       </div>
 
       <div className="flex-1 min-h-0 relative" onClick={(event) => event.stopPropagation()}>
-        {mode === '3d' && (
-          <div className="absolute inset-0">
-            <BlockDiagram3D
-              diagram={diagram}
-              selectedBlock={selectedBlock}
-              selectedWire={selectedWire}
-              onSelectBlock={block => { setSelectedBlock(block); setSelectedWire(null); }}
-              onSelectWire={wire => { setSelectedWire(wire); setSelectedBlock(null); }}
-              onClear={() => { setSelectedBlock(null); setSelectedWire(null); }}
-              matchedIds={matchedIds}
-              view={view3d}
-            />
-          </div>
-        )}
-        <div className={`absolute inset-0 bg-[#070b14] ${mode === '2d' ? '' : 'hidden'}`}>
+        <div className="absolute inset-0 bg-[#070b14]">
           <svg
             ref={svgRef}
             viewBox={viewBox}
@@ -412,7 +385,7 @@ export const ArchitectureDiagramView: React.FC<ArchitectureDiagramViewProps> = (
             ))}
           </div>
           <div className="absolute bottom-3 right-3 text-[8px] font-mono text-slate-500">
-            {mode === '3d' ? 'drag to orbit · wheel to zoom · click a block' : 'drag to pan · wheel / buttons to zoom · click a block'}
+            drag to pan · wheel / buttons to zoom · click a block
           </div>
         </div>
 
@@ -505,7 +478,7 @@ export const ArchitectureDiagramView: React.FC<ArchitectureDiagramViewProps> = (
       />
 
       <div className="px-4 py-1.5 border-t border-slate-800 bg-silicon-850 text-[8.5px] font-mono text-slate-500 flex items-center gap-3">
-        <span>{mode === '3d' ? '3D' : '2D'} · {mode === '2d' ? `${visibleBlocks.length}/${diagram.blocks.length}` : diagram.blocks.length} blocks · {mode === '2d' ? `${visibleWires.length}/${diagram.wires.length}` : diagram.wires.length} links</span>
+        <span>{visibleBlocks.length}/{diagram.blocks.length} blocks · {visibleWires.length}/{diagram.wires.length} links</span>
         <span className="text-slate-600">SPB/COMPB = CPU peripheral bus views · S2S/S2F/S2C = SRI bridges</span>
         <span className="ml-auto flex items-center gap-1"><ZoomIn className="w-3 h-3" /> spec-derived, public TRM Fig. 5</span>
       </div>

@@ -78,7 +78,7 @@ export const TopNav: React.FC<TopNavProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-sm font-bold text-white tracking-wide font-mono">
-                SILICONPULSE <span className="text-cyan-400">3D</span>
+                SILICONPULSE <span className="text-cyan-400">VLSI</span>
               </h1>
               <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-purple-950 text-purple-300 border border-purple-800">
                 VLSI Cockpit
@@ -129,7 +129,7 @@ export const TopNav: React.FC<TopNavProps> = ({
             }`}
           >
             <LayoutDashboard className="w-3.5 h-3.5" />
-            <span>Architecture 3D</span>
+            <span>Architecture</span>
           </button>
           <button
             onClick={() => onSelectView('platform')}
@@ -231,7 +231,7 @@ export const TopNav: React.FC<TopNavProps> = ({
         </div>
       </div>
 
-      {/* Sub Bar: Breadcrumbs & 3D Interactive Controls */}
+      {/* Sub Bar: Breadcrumbs & Diagram Controls */}
       <div className="px-4 py-2 bg-silicon-950/80 flex items-center justify-between text-xs flex-wrap gap-2">
         {/* Module-inside-Module Hierarchy Breadcrumb */}
         <div className="flex items-center gap-1.5 font-mono">
@@ -276,7 +276,7 @@ export const TopNav: React.FC<TopNavProps> = ({
           </span>
         </div>
 
-        {/* Architecture view owns its own 3D/2D layer controls. */}
+        {/* Architecture view owns its own 2D layer controls. */}
       </div>
     </header>
   );

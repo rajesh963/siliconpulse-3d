@@ -1,4 +1,4 @@
-# SiliconPulse 3D
+# SiliconPulse
 
 An interactive SoC/IP architecture explorer, public spec knowledge base, IP-XACT
 workbench and program tracker.
@@ -13,10 +13,10 @@ npm run build
 
 ## Views
 
-- **Architecture 3D** — spec-derived block/bus diagram rendered in 3D (orbit,
-  select, focused links) with a 2D schematic toggle, core/peripheral layers and
-  TRM references. Hand-built for all 11 SoC presets, and **bring-your-own** via
-  `diagram.json`, IP-XACT XML or CSV.
+- **Architecture** — 2D spec-derived block/bus diagram with core/peripheral
+  layers, click-through, nested modules, TRM references and editing. Hand-built
+  for all 11 SoC presets, and **bring-your-own** via `diagram.json`, IP-XACT XML
+  or CSV.
 - **Platform** — 11-company / 12-SoC catalog, spec query, cross-vendor IP graph,
   integration JSON, IP-XACT import/export + custom SoC assembly, and change-request / ADR / RTL-DV tracking.
 - **TRM Specs & Memory** — memory map, clocks, domains and subsystem hierarchy.
@@ -24,13 +24,13 @@ npm run build
 
 ## Bring your own SoC
 
-In **Architecture 3D**, click **Load JSON / IP-XACT / CSV**:
+In **Architecture**, click **Load JSON / IP-XACT / CSV**:
 
 - upload a `diagram.json` matching `public/examples/diagram.schema.json`
 - upload one or more IP-XACT components
 - upload a CSV block/wire netlist
 
-The diagram validates, renders in 3D/2D, and stays in your browser. **Export JSON**
+The diagram validates, renders in 2D, and stays in your browser. **Export JSON**
 downloads the current diagram. See [docs/DIAGRAM_IMPORT.md](docs/DIAGRAM_IMPORT.md).
 
 ## Desktop
@@ -64,4 +64,4 @@ bindings carry a `verified` flag. See [docs/PLATFORM.md](docs/PLATFORM.md) and
 
 - Front-end only; CR/ADR and custom SoC state use `localStorage`.
 - IP-XACT support is a practical 1685-2014 subset, not a full schema validator.
-- The 3D layout is architectural, not a physical floorplan/package model.
+- The diagram is architectural, not a physical floorplan/package model.

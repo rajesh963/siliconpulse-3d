@@ -5,14 +5,14 @@ No code change and no rebuild are required.
 
 ## UI flow
 
-1. Open **Architecture 3D**.
+1. Open **Architecture**.
 2. Click **Load JSON / IP-XACT / CSV**.
 3. Choose one of:
    - `diagram.json`
    - one or more IP-XACT 1685-2014 XML components
    - a CSV block/wire netlist
 4. Validate the draft and click **Load diagram**.
-5. The uploaded diagram renders in 3D and 2D. It is stored in `localStorage`
+5. The uploaded diagram renders in 2D. It is stored in `localStorage`
    for the current SoC.
 6. **Export JSON** downloads the current diagram, including built-in ones.
 7. **Clear upload** restores the built-in diagram.
@@ -43,7 +43,7 @@ Minimal:
 - `blocks[]` is required.
 - `wires[]` may give explicit `points` (`[[x,y], ...]`) or just `from`/`to`; the
   importer routes an orthogonal path between block centers when points are absent.
-- `kind` affects the 3D archetype: `cpu`, `bus`, `crossbar`, `bridge`, `memory`,
+- `kind` affects the diagram glyph: `cpu`, `bus`, `crossbar`, `bridge`, `memory`,
   `peripheral`, `accelerator`, `io`, `security`, `clock`, `debug`.
 - `groups` are optional dashed frames.
 - `moduleId` is optional; if present, **Open IP in Platform** can jump to it.
@@ -169,7 +169,7 @@ but the hosting provider still serves the app itself.
   extensions.
 - CSV import does not validate electrical correctness.
 - There is no multi-user editing, version history or audit trail.
-- Live 3D drag/rotate/edit is not implemented yet. The diagram schema and import layer are the foundation for that editor.
+- Live drag-and-drop layout editing is not implemented yet. The diagram schema and import layer are the foundation for that editor.
 
 The schema and import layer are the foundation for those features. A future
 spec-to-diagram pipeline would produce this same `diagram.json` with citations,

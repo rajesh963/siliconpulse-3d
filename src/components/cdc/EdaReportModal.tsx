@@ -73,7 +73,7 @@ export const EdaReportModal: React.FC<EdaReportModalProps> = ({ isOpen, onClose,
                 </span>
               </h2>
               <p className="text-xs text-slate-400">
-                Parse output logs from Synopsys SpyGlass or Cadence JasperGold to map CDC results directly to the 3D SoC model.
+                Parse output logs from Synopsys SpyGlass or Cadence JasperGold to map CDC results directly to the architecture model.
               </p>
             </div>
           </div>
@@ -183,7 +183,7 @@ export const EdaReportModal: React.FC<EdaReportModalProps> = ({ isOpen, onClose,
               className="px-5 py-2 rounded-lg text-xs font-bold text-black bg-cyan-400 hover:bg-cyan-300 transition shadow-glow-cyan flex items-center gap-2"
             >
               <CheckCircle2 className="w-4 h-4" />
-              Apply to 3D SoC Model
+              Apply to Architecture Model
             </button>
           </div>
         </div>

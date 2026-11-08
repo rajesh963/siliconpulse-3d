@@ -7,14 +7,14 @@ interface TRMSpecViewerProps {
   currentCompany: CompanySoCEntry;
   onSelectModule: (mod: ModuleNode) => void;
   onSelectDomainLens: (lens: DomainLens | null) => void;
-  onOpen3DView: () => void;
+  onOpenArchitecture: () => void;
 }
 
 export const TRMSpecViewer: React.FC<TRMSpecViewerProps> = ({
   currentCompany,
   onSelectModule,
   onSelectDomainLens,
-  onOpen3DView
+  onOpenArchitecture
 }) => {
   const [activeTab, setActiveTab] = useState<'memory_map' | 'clock_tree' | 'domains' | 'subsystems'>('memory_map');
   const [search, setSearch] = useState('');
@@ -200,13 +200,13 @@ export const TRMSpecViewer: React.FC<TRMSpecViewerProps> = ({
           <div>
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-300">Clock Domains</h3>
-              <span className="text-[10px] font-mono text-slate-500">click a domain to highlight it in 3D</span>
+              <span className="text-[10px] font-mono text-slate-500">click a domain to highlight it in the architecture diagram</span>
             </div>
             <div className="grid grid-cols-3 gap-2">
               {currentCompany.clockDomains.map(clk => (
                 <button
                   key={clk.name}
-                  onClick={() => { onSelectDomainLens({ kind: 'clock', name: clk.name }); onOpen3DView(); }}
+                  onClick={() => { onSelectDomainLens({ kind: 'clock', name: clk.name }); onOpenArchitecture(); }}
                   className="text-left p-2.5 rounded-lg bg-silicon-950 border border-slate-800 hover:border-cyan-600/60 transition font-mono"
                 >
                   <div className="flex items-center gap-2">
@@ -226,7 +226,7 @@ export const TRMSpecViewer: React.FC<TRMSpecViewerProps> = ({
               {currentCompany.resetDomains.map(rst => (
                 <button
                   key={rst.name}
-                  onClick={() => { onSelectDomainLens({ kind: 'reset', name: rst.name }); onOpen3DView(); }}
+                  onClick={() => { onSelectDomainLens({ kind: 'reset', name: rst.name }); onOpenArchitecture(); }}
                   className="text-left p-2.5 rounded-lg bg-silicon-950 border border-slate-800 hover:border-emerald-600/60 transition font-mono"
                 >
                   <div className="flex items-center gap-2">
@@ -246,7 +246,7 @@ export const TRMSpecViewer: React.FC<TRMSpecViewerProps> = ({
               {(currentCompany.powerDomains ?? []).map(pd => (
                 <button
                   key={pd.name}
-                  onClick={() => { onSelectDomainLens({ kind: 'power', name: pd.name }); onOpen3DView(); }}
+                  onClick={() => { onSelectDomainLens({ kind: 'power', name: pd.name }); onOpenArchitecture(); }}
                   className="text-left p-2.5 rounded-lg bg-silicon-950 border border-slate-800 hover:border-amber-600/60 transition font-mono"
                 >
                   <div className="flex items-center gap-2">
@@ -273,7 +273,7 @@ export const TRMSpecViewer: React.FC<TRMSpecViewerProps> = ({
                 className="p-4 rounded-xl bg-silicon-950 border border-slate-800 hover:border-slate-700 transition cursor-pointer flex flex-col justify-between"
                 onClick={() => {
                   onSelectModule(sub);
-                  onOpen3DView();
+                  onOpenArchitecture();
                 }}
               >
                 <div>
@@ -299,7 +299,7 @@ export const TRMSpecViewer: React.FC<TRMSpecViewerProps> = ({
                     {sub.children?.length ? `${sub.children.length} Child Blocks` : 'Leaf Block'}
                   </span>
                   <span className="text-cyan-300 flex items-center gap-1 font-semibold hover:underline">
-                    View in 3D <ArrowUpRight className="w-3.5 h-3.5" />
+                    View in Architecture <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </div>

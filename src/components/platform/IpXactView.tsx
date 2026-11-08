@@ -75,7 +75,7 @@ export const IpXactView: React.FC<IpXactViewProps> = ({ catalog, activeCompanyId
     }
     const soc = buildCustomSoc(components, socName || 'Custom SoC');
     onLoadCustomSoc(soc);
-    setBuildMessage(`Built ${socName} with ${components.length} components and ${soc.connections.length} inferred connections. Loaded in 3D.`);
+    setBuildMessage(`Built ${socName} with ${components.length} components and ${soc.connections.length} inferred connections. Loaded in Architecture.`);
   };
 
   const exportSoC = (company: CompanySoCEntry) => {
@@ -226,7 +226,7 @@ export const IpXactView: React.FC<IpXactViewProps> = ({ catalog, activeCompanyId
           </div>
           <ul className="text-[10px] text-slate-400 mt-2 space-y-1.5 leading-relaxed list-disc list-inside">
             <li><span className="text-slate-200">busInterfaces</span> → platform <span className="text-cyan-300">Port</span> records (direction, width, bus type, clock).</li>
-            <li><span className="text-slate-200">memoryMaps</span> → platform <span className="text-cyan-300">MemoryMapRange</span> and 3D hierarchy metadata.</li>
+            <li><span className="text-slate-200">memoryMaps</span> → platform <span className="text-cyan-300">MemoryMapRange</span> and diagram hierarchy metadata.</li>
             <li><span className="text-slate-200">vendor / library / name / version</span> → component identity and source references.</li>
             <li>Custom assembly lays components out in a 3×3 floorplan and infers connections between master/slave bus interfaces.</li>
             <li>Export preserves clock, reset and power domain comments; full vendor extensions are not yet round-tripped.</li>

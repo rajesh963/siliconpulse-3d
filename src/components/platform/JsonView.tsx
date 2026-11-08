@@ -30,7 +30,7 @@ const JsonTree: React.FC<{
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); onOpenModule(companyId, node.id); }}
           className="ml-auto px-1 py-0.5 rounded bg-slate-900 border border-slate-700 text-[8px] font-mono text-cyan-300 opacity-0 group-hover:opacity-100 hover:border-cyan-500/60"
         >
-          open 3D
+          open diagram
         </button>
       </summary>
       {hasChildren && (

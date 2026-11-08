@@ -527,7 +527,7 @@ export const SOC_HIERARCHY: ModuleNode = {
   ]
 };
 
-// 3D Interconnect Highway & Real TI C2000 CDC/RDC Crossings
+// Interconnect highways & real TI C2000 CDC/RDC crossings
 export const INTERCONNECT_CONNECTIONS: InterconnectConnection[] = [
   // 1. C28x DSP CPU to AXI/AHB Crossbar Matrix (Primary System Bus)
   {

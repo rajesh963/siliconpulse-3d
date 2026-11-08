@@ -213,7 +213,7 @@ export const CdcMatrixTable: React.FC<CdcMatrixTableProps> = ({
                       className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 text-[11px] font-semibold transition inline-flex items-center gap-1"
                     >
                       <Eye className="w-3.5 h-3.5" />
-                      View 3D
+                      View Architecture
                     </button>
                   </td>
                 </tr>

@@ -74,7 +74,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({ catalog, onLoadCompany
                   onClick={() => onLoadCompany(entry.id)}
                   className="flex-1 px-2 py-1.5 rounded bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-200 border border-cyan-500/40 text-[10px] font-mono font-bold transition flex items-center justify-center gap-1"
                 >
-                  <Box className="w-3.5 h-3.5" /> Load 3D
+                  <Box className="w-3.5 h-3.5" /> Load Diagram
                 </button>
                 <button
                   onClick={() => onOpenSpec(entry.id)}

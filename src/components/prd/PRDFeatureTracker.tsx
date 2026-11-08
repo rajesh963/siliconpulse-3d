@@ -7,13 +7,13 @@ import { Target, CheckCircle2, AlertTriangle, Eye, ArrowUpRight, Search, FileCod
 interface PRDFeatureTrackerProps {
   rootModule: ModuleNode;
   onSelectModule: (mod: ModuleNode) => void;
-  onOpen3DView: () => void;
+  onOpenArchitecture: () => void;
 }
 
 export const PRDFeatureTracker: React.FC<PRDFeatureTrackerProps> = ({
   rootModule,
   onSelectModule,
-  onOpen3DView
+  onOpenArchitecture
 }) => {
   const [features, setFeatures] = useState<PRDFeature[]>(MOCK_PRD_FEATURES);
   const [search, setSearch] = useState('');
@@ -137,7 +137,7 @@ export const PRDFeatureTracker: React.FC<PRDFeatureTrackerProps> = ({
               <th className="py-3 px-4">CDC Sign-off</th>
               <th className="py-3 px-4">DV Coverage</th>
               <th className="py-3 px-4">Maturity Status</th>
-              <th className="py-3 px-4 text-right">3D Action</th>
+              <th className="py-3 px-4 text-right">Architecture Action</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-800/60 font-sans">
@@ -151,7 +151,7 @@ export const PRDFeatureTracker: React.FC<PRDFeatureTrackerProps> = ({
                   onClick={() => {
                     if (linkedMod) {
                       onSelectModule(linkedMod);
-                      onOpen3DView();
+                      onOpenArchitecture();
                     }
                   }}
                 >
@@ -233,13 +233,13 @@ export const PRDFeatureTracker: React.FC<PRDFeatureTrackerProps> = ({
                         e.stopPropagation();
                         if (linkedMod) {
                           onSelectModule(linkedMod);
-                          onOpen3DView();
+                          onOpenArchitecture();
                         }
                       }}
                       className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 text-[11px] font-semibold transition inline-flex items-center gap-1"
                     >
                       <Eye className="w-3.5 h-3.5" />
-                      View in 3D
+                      View in Architecture
                     </button>
                   </td>
                 </tr>

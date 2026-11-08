@@ -10,7 +10,7 @@ export interface LevelInfo {
 }
 
 /**
- * Children rendered by the 3D scene for the active module.
+ * Children rendered by the diagram scene for the active module.
  * Positions stored in the catalog are local to the parent; the renderer re-centres
  * the whole level so the substrate and the camera always agree on the same origin.
  */

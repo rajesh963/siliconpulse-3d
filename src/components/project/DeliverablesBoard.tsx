@@ -7,13 +7,13 @@ import { CheckCircle2, XCircle, AlertCircle, Plus, Calendar, Clock, Layers } fro
 interface DeliverablesBoardProps {
   rootModule: ModuleNode;
   onSelectModule: (mod: ModuleNode) => void;
-  onOpen3DView: () => void;
+  onOpenArchitecture: () => void;
 }
 
 export const DeliverablesBoard: React.FC<DeliverablesBoardProps> = ({
   rootModule,
   onSelectModule,
-  onOpen3DView
+  onOpenArchitecture
 }) => {
   const [issues, setIssues] = useState<HardwareIssue[]>(MOCK_HARDWARE_ISSUES);
   const [selectedMilestone] = useState<TapeoutMilestone>(TAPEOUT_MILESTONES[2]); // v0.8
@@ -249,11 +249,11 @@ export const DeliverablesBoard: React.FC<DeliverablesBoardProps> = ({
                           onClick={(e) => {
                             e.stopPropagation();
                             onSelectModule(m);
-                            onOpen3DView();
+                            onOpenArchitecture();
                           }}
                           className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 text-[11px] font-semibold"
                         >
-                          View 3D
+                          View Architecture
                         </button>
                       </td>
                     </tr>

@@ -265,9 +265,9 @@ export const App: React.FC = () => {
   };
 
   // Used by the TRM / deliverables / PRD / requirements tables: selecting a
-  // module there should take the 3D view *inside* that module, not just
+  // module there should take the architecture view *inside* that module, not just
   // highlight it on the top-level die.
-  const handleOpenModuleIn3D = (mod: ModuleNode) => {
+  const handleOpenModuleInArchitecture = (mod: ModuleNode) => {
     if (mod.children && mod.children.length > 0) {
       handleDrillDown(mod);
     } else {
@@ -473,9 +473,9 @@ export const App: React.FC = () => {
           <div className="flex-1 p-4 overflow-hidden">
             <TRMSpecViewer
               currentCompany={activeCompany}
-              onSelectModule={handleOpenModuleIn3D}
+              onSelectModule={handleOpenModuleInArchitecture}
               onSelectDomainLens={handleSelectDomainLens}
-              onOpen3DView={() => setActiveView('diagram')}
+              onOpenArchitecture={() => setActiveView('diagram')}
             />
           </div>
         )}
@@ -496,8 +496,8 @@ export const App: React.FC = () => {
           <div className="flex-1 p-4 overflow-hidden">
             <DeliverablesBoard
               rootModule={rootModule}
-              onSelectModule={handleOpenModuleIn3D}
-              onOpen3DView={() => setActiveView('diagram')}
+              onSelectModule={handleOpenModuleInArchitecture}
+              onOpenArchitecture={() => setActiveView('diagram')}
             />
           </div>
         )}
@@ -507,8 +507,8 @@ export const App: React.FC = () => {
           <div className="flex-1 p-4 overflow-hidden">
             <PRDFeatureTracker
               rootModule={rootModule}
-              onSelectModule={handleOpenModuleIn3D}
-              onOpen3DView={() => setActiveView('diagram')}
+              onSelectModule={handleOpenModuleInArchitecture}
+              onOpenArchitecture={() => setActiveView('diagram')}
             />
           </div>
         )}
@@ -518,8 +518,8 @@ export const App: React.FC = () => {
           <div className="flex-1 p-4 overflow-hidden">
             <CustomerRequirementsMatrix
               rootModule={rootModule}
-              onSelectModule={handleOpenModuleIn3D}
-              onOpen3DView={() => setActiveView('diagram')}
+              onSelectModule={handleOpenModuleInArchitecture}
+              onOpenArchitecture={() => setActiveView('diagram')}
             />
           </div>
         )}
