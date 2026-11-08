@@ -6,29 +6,62 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "desktop": "npm run build && electron . --no-sandbox",
+    "desktop:dev": "electron . --no-sandbox",
+    "package:linux": "npm run build && electron-builder --linux AppImage"
   },
   "dependencies": {
+    "@react-three/drei": "^9.96.1",
+    "@react-three/fiber": "^8.15.16",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/three": "^0.160.0",
+    "canvas-confetti": "^1.9.2",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "three": "^0.160.0",
-    "@types/three": "^0.160.0",
-    "@react-three/fiber": "^8.15.16",
-    "@react-three/drei": "^9.96.1",
-    "lucide-react": "^0.344.0",
-    "clsx": "^2.1.0",
     "tailwind-merge": "^2.2.1",
-    "canvas-confetti": "^1.9.2",
-    "@types/canvas-confetti": "^1.9.0"
+    "three": "^0.160.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.2.1",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4",
-    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.17",
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0",
     "postcss": "^8.4.35",
-    "autoprefixer": "^10.4.17"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4"
+  },
+  "description": "SiliconPulse 3D \u2014 SoC architecture, nested module editor and integration knowledge workspace",
+  "author": "Rajesh",
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.siliconpulse.desktop",
+    "productName": "SiliconPulse 3D",
+    "asar": false,
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "category": "Development",
+      "artifactName": "SiliconPulse-3D-${version}.${ext}"
+    }
   }
 }

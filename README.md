@@ -33,6 +33,11 @@ In **Architecture 3D**, click **Load JSON / IP-XACT / CSV**:
 The diagram validates, renders in 3D/2D, and stays in your browser. **Export JSON**
 downloads the current diagram. See [docs/DIAGRAM_IMPORT.md](docs/DIAGRAM_IMPORT.md).
 
+## Desktop
+
+Run as a native desktop window: `npm run desktop`. Build a Linux AppImage:
+`npm run package:linux`. See [docs/DESKTOP.md](docs/DESKTOP.md).
+
 ## Deploy
 
 Use the included GitHub Actions workflow or any static host. See [docs/DEPLOY.md](docs/DEPLOY.md).

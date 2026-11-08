@@ -5,3 +5,7 @@ dist/
 chromedriver/
 *.tsbuildinfo
 .DS_Store
+release/
+.electron-cache/
+.electron-builder-cache/
+.npm-cache/
