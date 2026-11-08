@@ -20,6 +20,7 @@ jobs:
         run: node node_modules/electron/install.js
         env:
           electron_config_cache: ${{ github.workspace }}/.electron-cache
+          ELECTRON_MIRROR: https://npmmirror.com/mirrors/electron/
       - run: npm run package:linux:dir
       - run: cd release && zip -qr SiliconPulse-3D-linux-x64.zip linux-unpacked
       - uses: actions/upload-artifact@v4
