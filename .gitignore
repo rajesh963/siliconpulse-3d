@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.cache/
+.tools/cloudflared
+chromedriver/
+*.tsbuildinfo
+.DS_Store
